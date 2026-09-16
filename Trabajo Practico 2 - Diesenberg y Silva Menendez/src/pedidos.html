@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miga - Confirmar Pedido</title>
+</head>
+<body>
+    <header>
+        <a href="./index.html">
+            <img src="./recursos/imagenes/localmiga.jpg" alt="Logo de Miga">
+        </a>
+        <nav>
+            <a href="./catalogo.html">Volver al Carrito</a>
+            <a href="#ayuda">Ayuda</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Completá tus datos y forma de pago</h1>
+
+        <form action="./pedido.html" method="post">
+            <label for="id-nombre">Nombre Completo</label>
+            <input type="text" name="nombre" id="id-nombre">
+
+            <label for="id-telefono">Teléfono</label>
+            <input type="tel" name="telefono" id="id-telefono">
+
+            <label><input type="radio" name="entrega" value="retiro" checked> Lo retiro</label>
+            <label><input type="radio" name="entrega" value="delivery"> Necesito delivery</label>
+
+            <label><input type="radio" name="pago" value="efectivo" checked> Efectivo</label>
+            <label><input type="radio" name="pago" value="transferencia"> Transferencia</label>
+            <label><input type="radio" name="pago" value="tarjeta"> Tarjeta</label>
+
+            <button type="reset">Limpiar</button>
+            <button type="submit">Pagar</button>
+        </form>
+
+        <a href="./catalogo.html">Agregar más</a>
+
+        <form action="./catalogo.html" method="get">
+            <label for="id-buscar-pedido">Buscar</label>
+            <input type="search" name="buscar" id="id-buscar-pedido">
+            <button type="submit">Buscar</button>
+        </form>
+    </main>
+
+    <footer>
+        <ul>
+            <li>
+                <a href="https://instagram.com/miga">@miga</a>
+            </li>
+            <li>
+                Tel: <a href="tel:+5493511512345">351-15123456</a>
+            </li>
+            <li>
+                Email: <a href="mail:miga@gmail.com">miga@gmail.com</a>
+            </li>
+            <li>
+                Rondeau 123. Córdoba, Arg.
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>
