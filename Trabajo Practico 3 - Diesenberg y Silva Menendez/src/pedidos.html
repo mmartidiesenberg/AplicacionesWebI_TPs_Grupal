@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miga - Pedido</title>
+    <link rel="stylesheet" href="./recursos/estilos/base.css">
+    <link rel="stylesheet" href="./recursos/estilos/pedidos.css">
+</head>
+<body>
+    <header class="encabezado">
+        <a href="./index.html">
+            <img class="encabezado__logo" src="./recursos/imagenes/logomiga.jpg" alt="Logo de Miga">
+        </a>
+        <nav class="encabezado__navegacion">
+            <a class="encabezado__enlace" href="./catalogo.html">Volver al Carrito</a>
+            <a class="encabezado__enlace" href="#ayuda">Ayuda</a>
+        </nav>
+    </header>
+
+    <main class="principal pedido">
+        <h1 class="pedido__titulo">Completá tus datos y forma de pago</h1>
+        <form class="formulario" action="./pedidos.html" method="post">
+            <label class="formulario__etiqueta" for="id-nombre">Nombre Completo</label>
+            <input class="formulario__campo" type="text" name="nombre" id="id-nombre">
+
+            <label class="formulario__etiqueta" for="id-telefono">Teléfono</label>
+            <input class="formulario__campo" type="tel" name="telefono" id="id-telefono">
+
+            <div class="formulario__grupo">
+                <p class="formulario__etiqueta">Entrega</p>
+                <div class="formulario__opciones">
+                    <label class="opcion"><input type="radio" name="entrega" value="retiro" checked> Lo retiro</label>
+                    <label class="opcion"><input type="radio" name="entrega" value="delivery"> Necesito delivery</label>
+                </div>
+            </div>
+
+            <div class="formulario__grupo">
+                <p class="formulario__etiqueta">Forma de pago</p>
+                <div class="formulario__opciones">
+                    <label class="opcion"><input type="radio" name="pago" value="efectivo" checked> Efectivo</label>
+                    <label class="opcion"><input type="radio" name="pago" value="transferencia"> Transferencia</label>
+                    <label class="opcion"><input type="radio" name="pago" value="tarjeta"> Tarjeta</label>
+                </div>
+            </div>
+
+            <div class="formulario__acciones">
+                <button class="boton boton--contorno" type="reset">Limpiar</button>
+                <button class="boton boton--primario" type="submit">Pagar</button>
+            </div>
+        </form>
+
+        <aside class="pedido__lateral">
+            <a class="boton boton--contorno" href="./catalogo.html">Agregar más</a>
+
+            <form class="buscador" action="./catalogo.html" method="get">
+                <label class="buscador__etiqueta oculto-visualmente" for="id-buscar-pedido">Buscar</label>
+                <input class="buscador__campo" type="search" name="buscar" id="id-buscar-pedido" placeholder="Buscar y añadir producto...">
+                <button class="boton boton--primario" type="submit">Buscar</button>
+            </form>
+        </aside>
+    </main>
+
+    <footer class="pie">
+        <ul class="pie__lista">
+            <li class="pie__item">
+                <a href="https://instagram.com/miga">@miga</a>
+            </li>
+            <li class="pie__item">
+                Tel: <a href="tel:+5493511512345">351-15123456</a>
+            </li>
+            <li class="pie__item">
+                Email: <a href="mailto:miga@gmail.com">miga@gmail.com</a>
+            </li>
+            <li class="pie__item">
+                Rondeau 123. Córdoba, Arg.
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>
