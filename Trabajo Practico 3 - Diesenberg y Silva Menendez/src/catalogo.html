@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miga - Inicio</title>
+    <title>Miga - Catálogo</title>
     <link rel="stylesheet" href="./recursos/estilos/index.css">
 </head>
 <body>
@@ -12,44 +12,114 @@
             <img class="encabezado__logo" src="./recursos/imagenes/logomiga.jpg" alt="Logo de Miga">
         </a>
         <nav class="encabezado__navegacion">
-            <a class="encabezado__enlace encabezado__enlace--activo" href="./index.html">Inicio</a>
-            <a class="encabezado__enlace" href="./catalogo.html">Catálogo</a>
+            <a class="encabezado__enlace" href="./index.html">Inicio</a>
+            <a class="encabezado__enlace encabezado__enlace--activo" href="./catalogo.html">Catálogo</a>
             <a class="encabezado__enlace" href="./pedidos.html">Pedidos</a>
         </nav>
+        <form class="buscador" action="./catalogo.html" method="get">
+            <label class="buscador__etiqueta oculto-visualmente" for="id-buscar-catalogo">Buscar en Catálogo</label>
+            <input class="buscador__campo" type="search" name="buscar" id="id-buscar-catalogo" placeholder="Buscar en Catálogo...">
+            <button class="boton boton--primario" type="submit">Buscar</button>
+        </form>
     </header>
 
-    <main class="principal inicio">
-        <section class="promo">
-            <h1 class="promo__titulo">Promoción del Mes: Septiembre</h1>
-            <img class="promo__imagen" src="./recursos/imagenes/cafeymedialuna.jpg" alt="Promo del mes, café acompañado de una medialuna">
-            <p class="promo__nombre">Café + Medialuna</p>
-            <p class="promo__precio">$5.000</p>
-        </section>
+    <main class="principal">
+        <h1 class="catalogo__titulo">Catálogo</h1>
+        <p class="catalogo__aviso">Elegí lo que más te guste y añadilo al carrito</p>
+        <section>
+            <h2 class="oculto-visualmente">Productos</h2>
+            <div class="catalogo__grilla">
+                <article class="tarjeta">
+                    <picture class="tarjeta__figura">
+                        <img class="tarjeta__imagen" src="./recursos/imagenes/medialuna.jpg" alt="Medialuna o Croissant">
+                    </picture>
+                    <h3 class="tarjeta__titulo">Medialuna</h3>
+                    <p class="tarjeta__descripcion">Medialuna de manteca</p>
+                    <ul class="tarjeta__detalles">
+                        <li>Unidad o docena</li>
+                        <li>Precio $ 1500 x unidad</li>
+                        <li>Precio $ 15000 x docena</li>
+                    </ul>
+                    <button class="boton boton--primario tarjeta__boton">Añadir al carrito</button>
+                </article>
+                <article class="tarjeta">
+                    <picture class="tarjeta__figura">
+                        <img class="tarjeta__imagen" src="./recursos/imagenes/muffin.jpg" alt="Foto del artículo Muffin">
+                    </picture>
+                    <h3 class="tarjeta__titulo">Muffin</h3>
+                    <p class="tarjeta__descripcion">Muffin de chip de chocolate</p>
+                    <ul class="tarjeta__detalles">
+                        <li>Unidad</li>
+                        <li>Precio $ 1800</li>
+                    </ul>
+                    <button class="boton boton--primario tarjeta__boton">Añadir al carrito</button>
+                </article>
+                <article class="tarjeta">
+                    <picture class="tarjeta__figura">
+                        <img class="tarjeta__imagen" src="./recursos/imagenes/torta.jpg" alt="Porción de torta">
+                    </picture>
+                    <h3 class="tarjeta__titulo">Torta</h3>
+                    <p class="tarjeta__descripcion">Porción de torta casera</p>
+                    <ul class="tarjeta__detalles">
+                        <li>Porción</li>
+                        <li>Precio $ 3000</li>
+                    </ul>
+                    <button class="boton boton--primario tarjeta__boton">Añadir al carrito</button>
+                </article>
+                <article class="tarjeta">
+                    <picture class="tarjeta__figura">
+                        <img class="tarjeta__imagen" src="./recursos/imagenes/chipa.jpg" alt="Chipa o pan de queso">
+                    </picture>
+                    <h3 class="tarjeta__titulo">Chipa</h3>
+                    <p class="tarjeta__descripcion">Chipa recién horneada</p>
+                    <ul class="tarjeta__detalles">
+                        <li>Unidad o docena</li>
+                        <li>Precio $ 1200 x unidad</li>
+                        <li>Precio $ 13000 x docena</li>
+                    </ul>
+                    <button class="boton boton--primario tarjeta__boton">Añadir al carrito</button>
+                </article>
+                <article class="tarjeta">
+                    <picture class="tarjeta__figura">
+                        <img class="tarjeta__imagen" src="./recursos/imagenes/cafe.jpg" alt="Taza de café">
+                    </picture>
+                    <h3 class="tarjeta__titulo">Café</h3>
+                    <p class="tarjeta__descripcion">Café a elección</p>
+                    <ul class="tarjeta__detalles">
+                        <li>Chico $ 1500</li>
+                        <li>Mediano $ 2000</li>
+                        <li>Grande $ 3000</li>
+                    </ul>
+                    <button class="boton boton--primario tarjeta__boton">Añadir al carrito</button>
+                </article>
+                <article class="tarjeta">
+                    <picture class="tarjeta__figura">
+                        <img class="tarjeta__imagen" src="./recursos/imagenes/limonada.jpg" alt="Vaso de limonada">
+                    </picture>
+                    <h3 class="tarjeta__titulo">Limonada</h3>
+                    <p class="tarjeta__descripcion">Limonada natural</p>
+                    <ul class="tarjeta__detalles">
+                        <li>Vaso</li>
+                        <li>Precio $ 1800</li>
+                    </ul>
+                    <button class="boton boton--primario tarjeta__boton">Añadir al carrito</button>
+                </article>
 
-        <section class="mas-promos">
-            <h2 class="mas-promos__titulo">Más Promos</h2>
-            <ul class="mas-promos__lista">
-                <li class="mas-promos__item">Lunes</li>
-                <li class="mas-promos__item">Martes</li>
-                <li class="mas-promos__item">Miércoles</li>
-                <li class="mas-promos__item">Jueves</li>
-                <li class="mas-promos__item">Viernes</li>
-                <li class="mas-promos__item">Sábados</li>
-            </ul>
-        </section>
-
-        <section class="nosotros">
-            <h2 class="nosotros__titulo">Nosotros: ¿Quiénes Somos?</h2>
-            <p class="nosotros__texto">Somos una cafetería y pastelería que ofrece una variedad de cafés, productos de pastelería, desayunos y meriendas. Nuestra propuesta busca brindar productos ricos y de calidad en un ambiente cálido y agradable.</p>
-        </section>
-
-        <section class="horarios">
-            <h2 class="horarios__titulo">Nuestros Horarios</h2>
-            <p class="horarios__texto">Lunes a Viernes de 7 a 20 hs</p>
-            <p class="horarios__texto">Sábados y Domingos de 8 a 21 hs</p>
+                <article class="tarjeta">
+                    <picture class="tarjeta__figura">
+                        <img class="tarjeta__imagen" src="./recursos/imagenes/jugo.jpg" alt="Vaso de jugo">
+                    </picture>
+                    <h3 class="tarjeta__titulo">Jugo</h3>
+                    <p class="tarjeta__descripcion">Jugo exprimido</p>
+                    <ul class="tarjeta__detalles">
+                        <li>Vaso</li>
+                        <li>Precio $ 1800</li>
+                    </ul>
+                    <button class="boton boton--primario tarjeta__boton">Añadir al carrito</button>
+                </article>
+            </div>
         </section>
     </main>
-
     <footer class="pie">
         <ul class="pie__lista">
             <li class="pie__item">

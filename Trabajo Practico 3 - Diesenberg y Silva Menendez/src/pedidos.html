@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miga - Pedido</title>
-    <link rel="stylesheet" href="./recursos/estilos/base.css">
-    <link rel="stylesheet" href="./recursos/estilos/pedidos.css">
+    <link rel="stylesheet" href="./recursos/estilos/index.css">
 </head>
 <body>
     <header class="encabezado">
@@ -17,10 +16,9 @@
             <a class="encabezado__enlace" href="#ayuda">Ayuda</a>
         </nav>
     </header>
-
     <main class="principal pedido">
         <h1 class="pedido__titulo">Completá tus datos y forma de pago</h1>
-        <form class="formulario" action="./pedidos.html" method="post">
+        <form class="formulario" action="./pedidos.html" method="get">
             <label class="formulario__etiqueta" for="id-nombre">Nombre Completo</label>
             <input class="formulario__campo" type="text" name="nombre" id="id-nombre">
 
@@ -34,7 +32,6 @@
                     <label class="opcion"><input type="radio" name="entrega" value="delivery"> Necesito delivery</label>
                 </div>
             </div>
-
             <div class="formulario__grupo">
                 <p class="formulario__etiqueta">Forma de pago</p>
                 <div class="formulario__opciones">
@@ -43,14 +40,12 @@
                     <label class="opcion"><input type="radio" name="pago" value="tarjeta"> Tarjeta</label>
                 </div>
             </div>
-
             <div class="formulario__acciones">
                 <button class="boton boton--contorno" type="reset">Limpiar</button>
                 <button class="boton boton--primario" type="submit">Pagar</button>
             </div>
         </form>
-
-        <aside class="pedido__lateral">
+        <aside class="pedido__lateral" id="ayuda">
             <a class="boton boton--contorno" href="./catalogo.html">Agregar más</a>
 
             <form class="buscador" action="./catalogo.html" method="get">
@@ -60,14 +55,13 @@
             </form>
         </aside>
     </main>
-
     <footer class="pie">
         <ul class="pie__lista">
             <li class="pie__item">
                 <a href="https://instagram.com/miga">@miga</a>
             </li>
             <li class="pie__item">
-                Tel: <a href="tel:+5493511512345">351-15123456</a>
+                Tel: <a href="tel:+5493515123456">351-15123456</a>
             </li>
             <li class="pie__item">
                 Email: <a href="mailto:miga@gmail.com">miga@gmail.com</a>
