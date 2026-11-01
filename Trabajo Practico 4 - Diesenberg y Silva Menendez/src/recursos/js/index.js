@@ -1,25 +1,53 @@
 import { productosMiga } from "./productos.js"
-import { renderizarCatalogo } from "./funciones.js"
+import { renderizarCatalogo, obtenerCarrito, guardarCarrito, contarProductos, agregarAlCarrito } from "./funciones.js"
 
-const productosEnCarro = []
-
+const carrito = obtenerCarrito()
 const contenedorProductos = document.getElementById("contenedor-productos")
 const productosSeleccionados = document.getElementById("productos-seleccionados")
+const formularioBuscador = document.querySelector(".buscador")
+const campoBuscador = document.getElementById("id-buscar-catalogo")
 
-// Renderizamos
-renderizarCatalogo(contenedorProductos, productosMiga)
+function normalizar(texto) {
+    return texto
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+}
 
-// Escuchadores de los botones de cada producto
-const botonesProducto = contenedorProductos.querySelectorAll(".boton-agregar-producto")
+function mostrarCatalogo(lista) {
+    if (lista.length === 0) {
+        contenedorProductos.innerHTML = `<p class="catalogo__aviso">No encontramos productos con esa búsqueda.</p>`
+        return
+    }
+    renderizarCatalogo(contenedorProductos, lista)
+}
 
-botonesProducto.forEach((boton) => {
-    boton.addEventListener("click", () => {
-        const idProducto = parseInt(boton.dataset.id)
-        productosEnCarro.push(idProducto)
-        console.log(productosEnCarro)
+mostrarCatalogo(productosMiga)
+productosSeleccionados.textContent = contarProductos(carrito)
 
-        if (productosSeleccionados) {
-            productosSeleccionados.textContent = productosEnCarro.length
-        }
+contenedorProductos.addEventListener("click", (evento) => {
+    const boton = evento.target.closest(".boton-agregar-producto")
+    if (!boton) return
+
+    const idProducto = parseInt(boton.dataset.id)
+    const selector = document.getElementById("variante-" + idProducto)
+    const variante = selector ? parseInt(selector.value) : 0
+
+    agregarAlCarrito(carrito, idProducto, variante)
+    guardarCarrito(carrito)
+    productosSeleccionados.textContent = contarProductos(carrito)
+})
+
+campoBuscador.addEventListener("input", () => {
+    const texto = normalizar(campoBuscador.value.trim())
+
+    const productosFiltrados = productosMiga.filter((producto) => {
+        return normalizar(producto.nombre).includes(texto)
     })
+
+    mostrarCatalogo(productosFiltrados)
+})
+
+formularioBuscador.addEventListener("submit", (evento) => {
+    evento.preventDefault()
 })
