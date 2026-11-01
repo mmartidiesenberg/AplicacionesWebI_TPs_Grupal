@@ -6,7 +6,6 @@
     <title>Miga - Catálogo</title>
     <link rel="stylesheet" href="./recursos/estilos/index.css">
 </head>
-
 <body>
     <header class="encabezado">
         <a href="./index.html">
@@ -17,39 +16,36 @@
             <a class="encabezado__enlace encabezado__enlace--activo" href="./catalogo.html">Catálogo</a>
             <a class="encabezado__enlace" href="./pedidos.html">Pedidos</a>
         </nav>
+    </header>
+    <main class="contenido-principal">
+        <h1 class="catalogo__titulo">Catálogo</h1>
+        <p class="catalogo__aviso">Elegí lo que más te guste y añadilo al carrito. <a href="./pedidos.html">Ver mi pedido (<span id="productos-seleccionados">0</span>)</a></p>
         <form class="buscador" action="./catalogo.html" method="get">
             <label class="buscador__etiqueta oculto-visualmente" for="id-buscar-catalogo">Buscar en Catálogo</label>
             <input class="buscador__campo" type="search" name="buscar" id="id-buscar-catalogo" placeholder="Buscar en Catálogo...">
             <button class="boton boton--primario" type="submit">Buscar</button>
         </form>
-    </header>
-
-    <main class="principal">
-        <h1 class="catalogo__titulo">Catálogo</h1>
-        <p class="catalogo__aviso">Elegí lo que más te guste y añadilo al carrito. <a href="./pedidos.html">Ver mi pedido (<span id="productos-seleccionados">0</span>)</a></p>
         <section>
             <h2 class="oculto-visualmente">Productos</h2>
             <div class="catalogo__grilla" id="contenedor-productos"></div>
         </section>
     </main>
-
-    <footer class="pie">
-        <ul class="pie__lista">
-            <li class="pie__item">
+    <footer class="pie-pagina">
+        <ul class="pie-pagina__lista">
+            <li class="pie-pagina__item">
                 <a href="https://instagram.com/miga">@miga</a>
             </li>
-            <li class="pie__item">
+            <li class="pie-pagina__item">
                 Tel: <a href="tel:+5493515123456">351-15123456</a>
             </li>
-            <li class="pie__item">
+            <li class="pie-pagina__item">
                 Email: <a href="mailto:miga@gmail.com">miga@gmail.com</a>
             </li>
-            <li class="pie__item">
+            <li class="pie-pagina__item">
                 Rondeau 123. Córdoba, Arg.
             </li>
         </ul>
     </footer>
-
     <script type="module" src="./recursos/js/index.js"></script>
 </body>
 </html>
