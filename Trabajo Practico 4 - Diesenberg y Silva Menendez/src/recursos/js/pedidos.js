@@ -1,5 +1,5 @@
-import { productosMiga, contactoMiga } from "./productos.js"
-import { obtenerCarrito, guardarCarrito, calcularTotal, renderizarResumen, construirPedido, generarEnlaceWhatsApp } from "./funciones.js"
+import { contactoMiga } from "./productos.js"
+import { cargarProductos, obtenerCarrito, guardarCarrito, calcularTotal, renderizarResumen, construirPedido, generarEnlaceWhatsApp } from "./funciones.js"
 
 const carrito = obtenerCarrito()
 const resumen = document.getElementById("resumen")
@@ -8,6 +8,7 @@ const formulario = document.getElementById("formulario-pedido")
 const vistaPedido = document.getElementById("vista-pedido")
 const vistaConfirmacion = document.getElementById("vista-confirmacion")
 const mensajesError = document.querySelectorAll(".formulario__error")
+let productosMiga = []
 
 function actualizarResumen() {
     renderizarResumen(resumen, carrito, productosMiga)
@@ -20,7 +21,17 @@ function limpiarErrores() {
     })
 }
 
-actualizarResumen()
+async function iniciar() {
+    try {
+        productosMiga = await cargarProductos()
+        actualizarResumen()
+    } catch (error) {
+        console.error(error)
+        resumen.innerHTML = `<p>No pudimos cargar tu pedido. Probá recargar la página.</p>`
+    }
+}
+
+iniciar()
 
 resumen.addEventListener("click", (evento) => {
     const boton = evento.target.closest("button")

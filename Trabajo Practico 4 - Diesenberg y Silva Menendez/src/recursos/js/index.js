@@ -1,5 +1,5 @@
-import { productosMiga, categoriasMiga } from "./productos.js"
-import { renderizarCatalogo, renderizarCategorias, filtrarProductos, obtenerCarrito, guardarCarrito, contarProductos, agregarAlCarrito } from "./funciones.js"
+import { categoriasMiga } from "./productos.js"
+import { cargarProductos, renderizarCatalogo, renderizarCategorias, filtrarProductos, obtenerCarrito, guardarCarrito, contarProductos, agregarAlCarrito } from "./funciones.js"
 
 const carrito = obtenerCarrito()
 const contenedorProductos = document.getElementById("contenedor-productos")
@@ -9,6 +9,7 @@ const campoBuscador = document.getElementById("id-buscar-catalogo")
 const selectCategoria = document.getElementById("filtro-categoria")
 const selectOrden = document.getElementById("filtro-orden")
 const botonLimpiar = document.getElementById("limpiar-filtros")
+let productosMiga = []
 
 function mostrarCatalogo(lista) {
     if (lista.length === 0) {
@@ -26,9 +27,17 @@ function aplicarFiltros() {
     }
     mostrarCatalogo(filtrarProductos(productosMiga, filtros))
 }
-
-renderizarCategorias(selectCategoria, categoriasMiga)
-aplicarFiltros()
+async function iniciar() {
+    try {
+        productosMiga = await cargarProductos()
+        renderizarCategorias(selectCategoria, categoriasMiga)
+        aplicarFiltros()
+    } catch (error) {
+        console.error(error)
+        contenedorProductos.innerHTML = `<p class="catalogo__aviso">No pudimos cargar el catálogo. Probá recargar la página.</p>`
+    }
+}
+iniciar()
 productosSeleccionados.textContent = contarProductos(carrito)
 
 contenedorProductos.addEventListener("click", (evento) => {

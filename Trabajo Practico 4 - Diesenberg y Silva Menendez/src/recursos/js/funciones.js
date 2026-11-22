@@ -88,11 +88,20 @@ function renderizarCatalogo(contenedor, productos) {
 }
 
 function obtenerCarrito() {
-    return JSON.parse(localStorage.getItem("carrito")) || []
+    try {
+        return JSON.parse(localStorage.getItem("carrito")) || []
+    } catch (error) {
+        console.error("Carrito ilegible, se reinicia:", error)
+        return []
+    }
 }
 
 function guardarCarrito(carrito) {
-    localStorage.setItem("carrito", JSON.stringify(carrito))
+    try {
+        localStorage.setItem("carrito", JSON.stringify(carrito))
+    } catch (error) {
+        console.error("No se pudo guardar el carrito:", error)
+    }
 }
 
 function contarProductos(carrito) {
@@ -194,6 +203,14 @@ function generarEnlaceWhatsApp(numero, pedido) {
     return `https://wa.me/${numero}?text=${encodeURIComponent(armarMensajeWhatsApp(pedido))}`
 }
 
+async function cargarProductos() {
+    const respuesta = await fetch("./recursos/datos/productos.json")
+    if (!respuesta.ok) {
+        throw new Error(`No se Pudo Cargar el Catálogo (${respuesta.status})`)
+    }
+    return await respuesta.json()
+}
+
 export {
     renderizarCatalogo,
     renderizarCategorias,
@@ -205,5 +222,6 @@ export {
     calcularTotal,
     renderizarResumen,
     construirPedido,
-    generarEnlaceWhatsApp
+    generarEnlaceWhatsApp,
+    cargarProductos
 }

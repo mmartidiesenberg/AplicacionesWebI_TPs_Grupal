@@ -20,18 +20,18 @@
     <main class="contenido-principal">
         <section class="pedido" id="vista-pedido">
             <h1 class="pedido__titulo">Completá tus datos y forma de pago</h1>
-            <form class="formulario" id="formulario-pedido" novalidate>
+            <form class="formulario" id="formulario-pedido">
                 <label class="formulario__etiqueta" for="id-nombre">Nombre completo</label>
-                <input class="formulario__campo" type="text" id="id-nombre" name="nombre" placeholder="Ej: Juliana Sánchez">
+                <input class="formulario__campo" type="text" id="id-nombre" name="nombre" placeholder="Ej: Juliana Sánchez" required minlength="3" maxlength="60" autocomplete="name">
                 <p class="formulario__error" id="error-nombre"></p>
                 <label class="formulario__etiqueta" for="id-telefono">Teléfono</label>
-                <input class="formulario__campo" type="tel" id="id-telefono" name="telefono" placeholder="Ej: 3515123456">
+               <input class="formulario__campo" type="tel" id="id-telefono" name="telefono" placeholder="Ej: 3515123456" required pattern="[0-9]{8,15}" maxlength="15" title="Solo números, entre 8 y 15 dígitos" autocomplete="tel">
                 <p class="formulario__error" id="error-telefono"></p>
                 <fieldset class="formulario__grupo">
                     <legend class="formulario__etiqueta">Opción de entrega</legend>
                     <div class="formulario__opciones">
                         <label class="opcion-formulario">
-                            <input type="radio" name="entrega" value="Retiro en el local"> Lo retiro
+                            <input type="radio" name="entrega" value="Retiro en el local" required> Lo retiro
                         </label>
                         <label class="opcion-formulario">
                             <input type="radio" name="entrega" value="Delivery"> Necesito delivery
@@ -43,7 +43,7 @@
                     <legend class="formulario__etiqueta">Forma de pago</legend>
                     <div class="formulario__opciones">
                         <label class="opcion-formulario">
-                            <input type="radio" name="pago" value="Efectivo"> Efectivo
+                            <input type="radio" name="pago" value="Efectivo" required> Efectivo
                         </label>
                         <label class="opcion-formulario">
                             <input type="radio" name="pago" value="Transferencia"> Transferencia
