@@ -1,7 +1,19 @@
+const categoriasMiga = [
+    { id: "cafeteria", nombre: "Cafetería" },
+    { id: "pasteleria", nombre: "Pastelería" },
+    { id: "desayunos", nombre: "Desayunos" },
+    { id: "meriendas", nombre: "Meriendas" }
+]
+
+const contactoMiga = {
+    whatsapp: "5493515123456"
+}
+
 const productosMiga = [
     {
         id: 1,
         nombre: "Medialuna",
+        categoria: "desayunos",
         descripcion: "Medialuna de manteca",
         imagen: "./recursos/imagenes/medialuna.jpg",
         alt: "Medialuna o Croissant",
@@ -14,6 +26,7 @@ const productosMiga = [
     {
         id: 2,
         nombre: "Muffin",
+        categoria: "pasteleria",
         descripcion: "Muffin de chip de chocolate",
         imagen: "./recursos/imagenes/muffin.jpg",
         alt: "Foto del artículo Muffin",
@@ -25,6 +38,7 @@ const productosMiga = [
     {
         id: 3,
         nombre: "Torta",
+        categoria: "pasteleria",
         descripcion: "Porción de torta casera",
         imagen: "./recursos/imagenes/torta.jpg",
         alt: "Porción de torta",
@@ -36,6 +50,7 @@ const productosMiga = [
     {
         id: 4,
         nombre: "Chipa",
+        categoria: "meriendas",
         descripcion: "Chipa recién horneada",
         imagen: "./recursos/imagenes/chipa.jpg",
         alt: "Chipa o pan de queso",
@@ -48,6 +63,7 @@ const productosMiga = [
     {
         id: 5,
         nombre: "Café",
+        categoria: "cafeteria",
         descripcion: "Café a elección",
         imagen: "./recursos/imagenes/cafe.jpg",
         alt: "Taza de café",
@@ -61,6 +77,7 @@ const productosMiga = [
     {
         id: 6,
         nombre: "Limonada",
+        categoria: "meriendas",
         descripcion: "Limonada natural",
         imagen: "./recursos/imagenes/limonada.jpg",
         alt: "Vaso de limonada",
@@ -72,6 +89,7 @@ const productosMiga = [
     {
         id: 7,
         nombre: "Jugo",
+        categoria: "desayunos",
         descripcion: "Jugo exprimido",
         imagen: "./recursos/imagenes/jugo.jpg",
         alt: "Vaso de jugo",
@@ -82,4 +100,4 @@ const productosMiga = [
     }
 ]
 
-export { productosMiga }
+export { productosMiga, categoriasMiga, contactoMiga }

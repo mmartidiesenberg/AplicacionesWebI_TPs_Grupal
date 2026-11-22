@@ -25,6 +25,24 @@
             <input class="buscador__campo" type="search" name="buscar" id="id-buscar-catalogo" placeholder="Buscar en Catálogo...">
             <button class="boton boton--primario" type="submit">Buscar</button>
         </form>
+        <div class="filtros">
+            <div class="filtros__grupo">
+                <label class="filtros__etiqueta" for="filtro-categoria">Categoría</label>
+                <select class="filtros__campo" id="filtro-categoria">
+                    <option value="">Todas</option>
+                </select>
+            </div>
+            <div class="filtros__grupo">
+                <label class="filtros__etiqueta" for="filtro-orden">Ordenar por</label>
+                <select class="filtros__campo" id="filtro-orden">
+                    <option value="">Sin orden</option>
+                    <option value="precio-asc">Menor precio</option>
+                    <option value="precio-desc">Mayor precio</option>
+                    <option value="nombre">Nombre (A-Z)</option>
+                </select>
+            </div>
+            <button class="boton boton--contorno" type="button" id="limpiar-filtros">Limpiar filtros</button>
+        </div>
         <section>
             <h2 class="oculto-visualmente">Productos</h2>
             <div class="catalogo__grilla" id="contenedor-productos"></div>

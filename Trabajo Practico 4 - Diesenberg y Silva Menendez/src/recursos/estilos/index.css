@@ -517,3 +517,44 @@ a{
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
+.filtros{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.filtros__grupo{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.filtros__etiqueta{
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.filtros__campo{
+    padding: 0.6rem 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    color: #3d2520;
+    background-color: #fffaf5;
+    border: 1px solid #eadfd5;
+    border-radius: 999px;
+}
+
+.filtros__campo:focus{
+    outline: 2px solid #b05a1f;
+}
+
+.confirmacion__aviso{
+    background-color: #f6ece3;
+    color: #b05a1f;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+}

@@ -1,5 +1,5 @@
-import { productosMiga } from "./productos.js"
-import { obtenerCarrito, guardarCarrito, calcularTotal, renderizarResumen } from "./funciones.js"
+import { productosMiga, contactoMiga } from "./productos.js"
+import { obtenerCarrito, guardarCarrito, calcularTotal, renderizarResumen, construirPedido, generarEnlaceWhatsApp } from "./funciones.js"
 
 const carrito = obtenerCarrito()
 const resumen = document.getElementById("resumen")
@@ -85,10 +85,17 @@ formulario.addEventListener("submit", (evento) => {
 
     if (!valido) return
 
-    document.getElementById("confirmacion-nombre").textContent = nombre
-    document.getElementById("confirmacion-entrega").textContent = entrega
-    document.getElementById("confirmacion-pago").textContent = pago
-    document.getElementById("confirmacion-total").textContent = calcularTotal(carrito, productosMiga)
+    const pedido = construirPedido(carrito, productosMiga, { nombre, telefono, entrega, pago })
+    const enlaceWhatsApp = generarEnlaceWhatsApp(contactoMiga.whatsapp, pedido)
+
+    console.log(JSON.stringify(pedido, null, 2))
+
+    document.getElementById("confirmacion-nombre").textContent = pedido.cliente.nombre
+    document.getElementById("confirmacion-entrega").textContent = pedido.entrega
+    document.getElementById("confirmacion-pago").textContent = pedido.pago
+    document.getElementById("confirmacion-total").textContent = pedido.total
+    document.getElementById("confirmacion-whatsapp").href = enlaceWhatsApp
+    document.getElementById("confirmacion-retiro").hidden = entrega !== "Retiro en el local"
 
     carrito.length = 0
     guardarCarrito(carrito)
@@ -96,6 +103,8 @@ formulario.addEventListener("submit", (evento) => {
     vistaPedido.hidden = true
     vistaConfirmacion.hidden = false
     window.scrollTo(0, 0)
+
+    window.open(enlaceWhatsApp, "_blank")
 })
 
 formulario.addEventListener("reset", () => {

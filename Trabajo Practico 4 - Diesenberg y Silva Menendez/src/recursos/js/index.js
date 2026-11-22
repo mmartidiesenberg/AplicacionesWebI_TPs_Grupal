@@ -1,18 +1,14 @@
-import { productosMiga } from "./productos.js"
-import { renderizarCatalogo, obtenerCarrito, guardarCarrito, contarProductos, agregarAlCarrito } from "./funciones.js"
+import { productosMiga, categoriasMiga } from "./productos.js"
+import { renderizarCatalogo, renderizarCategorias, filtrarProductos, obtenerCarrito, guardarCarrito, contarProductos, agregarAlCarrito } from "./funciones.js"
 
 const carrito = obtenerCarrito()
 const contenedorProductos = document.getElementById("contenedor-productos")
 const productosSeleccionados = document.getElementById("productos-seleccionados")
 const formularioBuscador = document.querySelector(".buscador")
 const campoBuscador = document.getElementById("id-buscar-catalogo")
-
-function normalizar(texto) {
-    return texto
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-}
+const selectCategoria = document.getElementById("filtro-categoria")
+const selectOrden = document.getElementById("filtro-orden")
+const botonLimpiar = document.getElementById("limpiar-filtros")
 
 function mostrarCatalogo(lista) {
     if (lista.length === 0) {
@@ -22,7 +18,17 @@ function mostrarCatalogo(lista) {
     renderizarCatalogo(contenedorProductos, lista)
 }
 
-mostrarCatalogo(productosMiga)
+function aplicarFiltros() {
+    const filtros = {
+        texto: campoBuscador.value.trim(),
+        categoria: selectCategoria.value,
+        orden: selectOrden.value
+    }
+    mostrarCatalogo(filtrarProductos(productosMiga, filtros))
+}
+
+renderizarCategorias(selectCategoria, categoriasMiga)
+aplicarFiltros()
 productosSeleccionados.textContent = contarProductos(carrito)
 
 contenedorProductos.addEventListener("click", (evento) => {
@@ -38,14 +44,15 @@ contenedorProductos.addEventListener("click", (evento) => {
     productosSeleccionados.textContent = contarProductos(carrito)
 })
 
-campoBuscador.addEventListener("input", () => {
-    const texto = normalizar(campoBuscador.value.trim())
+campoBuscador.addEventListener("input", aplicarFiltros)
+selectCategoria.addEventListener("change", aplicarFiltros)
+selectOrden.addEventListener("change", aplicarFiltros)
 
-    const productosFiltrados = productosMiga.filter((producto) => {
-        return normalizar(producto.nombre).includes(texto)
-    })
-
-    mostrarCatalogo(productosFiltrados)
+botonLimpiar.addEventListener("click", () => {
+    campoBuscador.value = ""
+    selectCategoria.value = ""
+    selectOrden.value = ""
+    aplicarFiltros()
 })
 
 formularioBuscador.addEventListener("submit", (evento) => {
