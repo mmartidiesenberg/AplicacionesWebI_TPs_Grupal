@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "./Trabajo Practico 4 - Diesenberg y Silva Menendez"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: "Trabajo Practico 4 - Diesenberg y Silva Menendez/pnpm-lock.yaml"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
