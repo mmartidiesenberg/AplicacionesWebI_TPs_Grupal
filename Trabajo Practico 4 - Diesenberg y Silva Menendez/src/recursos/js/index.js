@@ -1,5 +1,7 @@
 import { categoriasMiga } from "./productos.js"
-import { cargarProductos, renderizarCatalogo, renderizarCategorias, filtrarProductos, obtenerCarrito, guardarCarrito, contarProductos, agregarAlCarrito } from "./funciones.js"
+import { mostrarCatalogo, renderizarCategorias } from "./vista.js"
+import { cargarProductos, filtrarProductos } from "./catalogo.js"
+import { obtenerCarrito, guardarCarrito, contarProductos, agregarAlCarrito } from "./carrito.js"
 
 const carrito = obtenerCarrito()
 const contenedorProductos = document.getElementById("contenedor-productos")
@@ -11,21 +13,13 @@ const selectOrden = document.getElementById("filtro-orden")
 const botonLimpiar = document.getElementById("limpiar-filtros")
 let productosMiga = []
 
-function mostrarCatalogo(lista) {
-    if (lista.length === 0) {
-        contenedorProductos.innerHTML = `<p class="catalogo__aviso">No encontramos productos con esa búsqueda.</p>`
-        return
-    }
-    renderizarCatalogo(contenedorProductos, lista)
-}
-
 function aplicarFiltros() {
     const filtros = {
         texto: campoBuscador.value.trim(),
         categoria: selectCategoria.value,
         orden: selectOrden.value
     }
-    mostrarCatalogo(filtrarProductos(productosMiga, filtros))
+    mostrarCatalogo(contenedorProductos, filtrarProductos(productosMiga, filtros))
 }
 async function iniciar() {
     try {

@@ -1,5 +1,8 @@
 import { contactoMiga } from "./productos.js"
-import { cargarProductos, obtenerCarrito, guardarCarrito, calcularTotal, renderizarResumen, construirPedido, generarEnlaceWhatsApp } from "./funciones.js"
+import { actualizarResumen, limpiarErrores } from "./vista.js"
+import { cargarProductos } from "./catalogo.js"
+import { obtenerCarrito, guardarCarrito } from "./carrito.js"
+import { construirPedido, generarEnlaceWhatsApp } from "./envio.js"
 
 const carrito = obtenerCarrito()
 const resumen = document.getElementById("resumen")
@@ -10,21 +13,10 @@ const vistaConfirmacion = document.getElementById("vista-confirmacion")
 const mensajesError = document.querySelectorAll(".formulario__error")
 let productosMiga = []
 
-function actualizarResumen() {
-    renderizarResumen(resumen, carrito, productosMiga)
-    total.textContent = calcularTotal(carrito, productosMiga)
-}
-
-function limpiarErrores() {
-    mensajesError.forEach((mensaje) => {
-        mensaje.textContent = ""
-    })
-}
-
 async function iniciar() {
     try {
         productosMiga = await cargarProductos()
-        actualizarResumen()
+        actualizarResumen(resumen, total, carrito, productosMiga)
     } catch (error) {
         console.error(error)
         resumen.innerHTML = `<p>No pudimos cargar tu pedido. Probá recargar la página.</p>`
@@ -56,12 +48,12 @@ resumen.addEventListener("click", (evento) => {
     }
 
     guardarCarrito(carrito)
-    actualizarResumen()
+    actualizarResumen(resumen, total, carrito, productosMiga)
 })
 
 formulario.addEventListener("submit", (evento) => {
     evento.preventDefault()
-    limpiarErrores()
+    limpiarErrores(mensajesError)
 
     const nombre = formulario.elements["nombre"].value.trim()
     const telefono = formulario.elements["telefono"].value.trim()
@@ -119,5 +111,5 @@ formulario.addEventListener("submit", (evento) => {
 })
 
 formulario.addEventListener("reset", () => {
-    limpiarErrores()
+    limpiarErrores(mensajesError)
 })
