@@ -61,8 +61,8 @@ formulario.addEventListener("submit", (evento) => {
     const pago = formulario.elements["pago"].value
     let valido = true
 
-    if (nombre.length < 3) {
-        document.getElementById("error-nombre").textContent = "Ingresá tu nombre completo."
+    if (nombre.length < 3 || !/^[\p{L} '\-]+$/u.test(nombre)) {
+        document.getElementById("error-nombre").textContent = "Ingresá tu nombre completo (solo letras)."
         valido = false
     }
 
