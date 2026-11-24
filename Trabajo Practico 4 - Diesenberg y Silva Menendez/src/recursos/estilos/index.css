@@ -309,6 +309,14 @@ a{
     color: #6b5a54;
 }
 
+.nosotros__imagen{
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+
 .pedido{
     display: grid;
     gap: 1.5rem;

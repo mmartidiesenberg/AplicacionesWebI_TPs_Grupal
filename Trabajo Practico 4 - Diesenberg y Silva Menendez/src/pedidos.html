@@ -30,11 +30,11 @@
                 <fieldset class="formulario__grupo">
                     <legend class="formulario__etiqueta">Opción de entrega</legend>
                     <div class="formulario__opciones">
-                        <label class="opcion-formulario">
-                            <input type="radio" name="entrega" value="Retiro en el local" required> Lo retiro
+                        <label class="opcion-formulario" for="entrega-retiro">
+                            <input type="radio" id="entrega-retiro" name="entrega" value="Retiro en el local" required> Lo retiro
                         </label>
-                        <label class="opcion-formulario">
-                            <input type="radio" name="entrega" value="Delivery"> Necesito delivery
+                        <label class="opcion-formulario" for="entrega-delivery">
+                            <input type="radio" id="entrega-delivery" name="entrega" value="Delivery"> Necesito delivery
                         </label>
                     </div>
                     <p class="formulario__error" id="error-entrega"></p>
@@ -42,14 +42,14 @@
                 <fieldset class="formulario__grupo">
                     <legend class="formulario__etiqueta">Forma de pago</legend>
                     <div class="formulario__opciones">
-                        <label class="opcion-formulario">
-                            <input type="radio" name="pago" value="Efectivo" required> Efectivo
+                        <label class="opcion-formulario" for="pago-efectivo">
+                            <input type="radio" id="pago-efectivo" name="pago" value="Efectivo" required> Efectivo
                         </label>
-                        <label class="opcion-formulario">
-                            <input type="radio" name="pago" value="Transferencia"> Transferencia
+                        <label class="opcion-formulario" for="pago-transferencia">
+                            <input type="radio" id="pago-transferencia" name="pago" value="Transferencia"> Transferencia
                         </label>
-                        <label class="opcion-formulario">
-                            <input type="radio" name="pago" value="Tarjeta"> Tarjeta
+                        <label class="opcion-formulario" for="pago-tarjeta">
+                            <input type="radio" id="pago-tarjeta" name="pago" value="Tarjeta"> Tarjeta
                         </label>
                     </div>
                     <p class="formulario__error" id="error-pago"></p>
